@@ -23,15 +23,21 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, idx;
 
-	for (i = 0; i < size - 1; i++)
+	if (size > 0)
 	{
-		idx = i;
-		for (j = i + 1; j < size; j++)
+		for (i = 0; i < size - 1; i++)
 		{
-			if (array[j] < array[idx])
-				idx = j;
+			idx = i;
+			for (j = i + 1; j < size; j++)
+			{
+				if (array[j] < array[idx])
+					idx = j;
+			}
+			if (idx != i)
+			{
+				swap(&array[idx], &array[i]);
+				print_array(array, size);
+			}
 		}
-		swap(&array[idx], &array[i]);
-		print_array(array, size);
 	}
 }
